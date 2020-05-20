@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://bait002:Money2017@myfirstcluster-uc2cp.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://bait002:money2017@myfirstcluster-uc2cp.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecret"
 }
