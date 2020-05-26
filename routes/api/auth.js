@@ -14,11 +14,10 @@ const User = require('../../models/User.model');
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
-    // console.log(req.user.id);
     res.json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).send('Server Error');
   }
 });
 
@@ -35,7 +34,7 @@ router.post(
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
-        erros: errors.array(),
+        errors: errors.array(),
       });
     }
 
@@ -45,13 +44,13 @@ router.post(
       let user = await User.findOne({ email });
 
       if (!user) {
-        res.status(400).json({ erros: [{ msg: 'Invalid Credentials' }] });
+        res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        res.status(400).json({ erros: [{ msg: 'Invalid Credentials' }] });
+        res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
 
       // Generate JWT to make user login once registered

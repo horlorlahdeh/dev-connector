@@ -35,7 +35,7 @@ router.post(
       let user = await User.findOne({ email });
 
       if (user) {
-        res.status(400).json({ erros: [{ msg: 'User already exists' }] });
+        res.status(400).json({ errors: [{ msg: 'User already exists' }] });
       }
 
       // Get the gravatar image
@@ -56,6 +56,7 @@ router.post(
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
 
+      //Save user to database using Mongoose save()
       await user.save();
       // Generate JWT to make user login once registered
       const payload = {
