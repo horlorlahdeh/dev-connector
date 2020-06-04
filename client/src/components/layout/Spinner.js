@@ -3,7 +3,7 @@ import spinner from './spinner.svg';
 
 export default () => {
   return (
-    <Fragment style={{ display: 'flex', height: '100vh' }}>
+    <Fragment>
       <img
         src={spinner}
         alt='Loading...'
