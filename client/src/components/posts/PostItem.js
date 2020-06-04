@@ -8,6 +8,13 @@ const PostItem = (props) => {
   return <div></div>;
 };
 
-PostItem.propTypes = {};
+PostItem.propTypes = {
+  post: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+};
 
-export default connect(null, {})(PostItem);
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, {})(PostItem);
